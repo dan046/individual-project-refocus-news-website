@@ -1,0 +1,190 @@
+@use 'variables.scss';
+
+@mixin display($display, $justify-content, $align-items){
+    display: $display;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+@mixin headerDesktop(){
+    background: variables.$header;
+    position: static;
+    width: 100%;
+}
+
+@mixin headerMobile(){
+    background: variables.$header;
+    position: sticky;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
+@mixin navbar(){
+    justify-content: space-between;
+    align-items: center;
+    min-height: 90px;
+    display: flex;
+}
+
+@mixin navMenuDesktop(){
+    @include display(none, space-between, center);
+    margin-right: 80px;
+    gap: 20px;
+}
+
+@mixin navMenuMobile(){
+    @include display(none, space-between, center);
+    margin-right: 80px;
+    gap: 20px;
+    // 
+    text-align: center;
+    padding: 24px 0;
+    position: fixed;
+    display: none;
+    width: 100%;
+    top: 70px;
+    left: 0;
+    background-color: variables.$header;
+}
+
+@mixin linkStyles(){
+    color: variables.$whiteFontColor;
+    text-transform: capitalize;
+    font-style: normal;
+    line-height: 24px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+@mixin footer(){
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    .left-container{
+        margin: 60px 0 60px 80px
+    }
+    .right-container{
+        @include display(flex, space-between, flex-start);
+        flex-direction: column;
+        margin: 60px 89px 60px 0px;
+    }
+    @include footerStyles();
+    .blog-menu, .course-list, .social-network, .tos{
+        display: flex;
+    }
+    .social-network{
+        gap: 15px;
+    }
+    .blog-menu, .course-list{
+        @include footerLinkStyles();
+    }
+}
+
+@mixin socialContainerTextStyles(){
+    color: variables.$socialContainerTextColor;
+    text-transform: capitalize;
+    letter-spacing: -0.02em;
+    font-style: normal;
+    line-height: 130%;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+@mixin legalityStyles(){
+    color: variables.$socialContainerTextColor;
+    letter-spacing: -0.03em;
+    font-style: normal;
+    line-height: 130%;
+    font-weight: 400;
+    font-size: 12px;
+    opacity: 0.4;
+}
+
+@mixin footerLinkStyles(){
+    color: variables.$footerListColor;
+    text-transform: capitalize;
+    letter-spacing: -0.03em;
+    font-style: normal;
+    line-height: 130%;
+    font-weight: 400;
+    font-size: 12px;
+    gap: 20px;
+    :hover, :focus-visible{
+        cursor: pointer;
+    }
+}
+
+@mixin buttonStylesMobile(){
+    display: flex;
+    flex-direction: column;
+    a{
+        text-transform: capitalize;
+    }
+}
+
+@mixin signupStyles(){
+    color: variables.$normal;
+    letter-spacing: -0.01em;
+    font-style: normal;
+    line-height: 16px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+@mixin loginDesktop(){
+    border: 1px solid variables.$lightblue;
+    color: variables.$lightblue;
+    letter-spacing: -0.01em;
+    border-radius: 40px;
+    padding: 16px 20px;
+    font-style: normal;
+    line-height: 16px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@mixin loginStylesMobile(){
+    color: variables.$lightblue;
+    letter-spacing: -0.01em;
+    padding: 16px 20px;
+    font-style: normal;
+    line-height: 16px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@mixin hamburgerStyles(){
+    position: relative;
+    margin-right: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    width: 30px;
+    &::before{
+        content: '';
+        border: 0.2px solid variables.$fill;
+        border-radius: 50%;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: -9px;
+        top: -13px;
+    }
+}
+
+@mixin hamburgerBarStyles(){
+    display: block;
+    width: 25px;
+    height: 2px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: variables.$fill;
+    transition: transform 0.2s ease-out;
+}
+
+@mixin footerStyles(){
+    background: variables.$footerBG;
+}
