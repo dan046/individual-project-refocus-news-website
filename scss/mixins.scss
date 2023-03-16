@@ -57,10 +57,97 @@
     font-size: 16px;
 }
 
+@mixin deleteButtonStyles(){
+    cursor: pointer;
+    position: absolute;
+    display: none;
+    right: 15px;
+    top: 15px;
+    &:hover path{
+        fill: variables.$active;
+    };
+    &:hover rect{
+        stroke: variables.$active;
+    }
+}
+
+@mixin deleteButtonActiveStyles(){
+    background-color: variables.$active;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    path{
+        fill: variables.$whitebackground;
+    }
+}
+
+@mixin gridContainerStyles(){
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 60px 80px 60px 80px;
+    gap: 40px;
+    // grid-gap: 40px;
+    // margin: 20px;
+}
+
+@mixin gridItemStyles(){
+    // added
+    position: relative;
+    // added
+    // added 2
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // added 2
+    background: variables.$gridItemBackground;
+    border-radius: 6px;
+    overflow: hidden;
+    // width: 320px;
+    &:hover #check-circle{
+        display: block;
+    };
+    h3{
+        margin: 10px 20px 0 20px;
+        display: flex;
+        align-items: center;
+    };
+}
+
+@mixin detailStyles(){
+    @include display(flex, space-between, center);
+    border-top: 1px solid variables.$detailsBorderColor;
+    margin: 0 20px;
+    padding: 10px 0 10px 0;
+}
+
+@mixin dateStyles(){
+    border: 1px solid variables.$borderColor;
+    border-radius: 40px;
+    padding: 4px 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    text-align: center;
+    color: variables.$dateColor;
+}
+
+@mixin statsStyles(){
+    color: variables.$statsColor;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: -0.03em;
+}
+
 @mixin footer(){
     margin-top: auto;
     display: flex;
     justify-content: space-between;
+    width: 100%;
     .left-container{
         margin: 60px 0 60px 80px
     }

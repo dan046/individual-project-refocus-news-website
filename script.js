@@ -2,7 +2,17 @@ const closeBtn = document.querySelectorAll(".delete-icon")
 const hamburger = document.querySelector(".hamburger")
 const navMenu = document.querySelector(".nav-menu")
 const checkBtn = document.querySelectorAll("#check-circle")
-const cards = document.querySelectorAll(".grid-item")
+const hearts = document.querySelectorAll(".fa-heart")
+
+hearts.forEach((heart) => {
+  heart.addEventListener("click", () => {
+    if (heart) {
+      heart.classList.toggle("far")
+      heart.classList.toggle("fas")
+      heart.classList.toggle("clicked")
+    }
+  })
+})
 
 closeBtn.forEach((button) => {
   button.addEventListener("click", (e) => {

@@ -1,4 +1,4 @@
-@import '/css/normalize.css';
+@import url("./css/normalize.css");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 html {
   font-family: "Inter", sans-serif;
@@ -46,6 +46,9 @@ header {
 
 .grid-item {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #F8F9FC;
   border-radius: 6px;
   overflow: hidden;
@@ -53,21 +56,88 @@ header {
 .grid-item:hover #check-circle {
   display: block;
 }
-.grid-item img {
-  width: 100%;
+.grid-item h3 {
+  margin: 10px 20px 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.fa-heart {
+  cursor: pointer;
+  color: #9D9DB5;
+}
+.fa-heart:hover {
+  color: #0266FF;
+}
+
+.fa-heart.clicked {
+  color: #0266FF;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #9D9DB5;
+  margin: 0 20px;
+  padding: 10px 0 10px 0;
+}
+
+.date {
+  border: 1px solid #C0BFCF;
+  border-radius: 40px;
+  padding: 4px 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 130%;
+  text-align: center;
+  color: #9D9DB5;
+}
+
+.views {
+  color: #9D9DB5;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: -0.03em;
 }
 
 .delete-icon {
   cursor: pointer;
   position: absolute;
-  top: 15px;
+  display: none;
   right: 15px;
+  top: 15px;
+}
+.delete-icon:hover path {
+  fill: #0266FF;
+}
+.delete-icon:hover rect {
+  stroke: #0266FF;
+}
+
+.grid-item:hover .delete-icon {
+  display: block;
+}
+
+.delete-icon:active {
+  background-color: #0266FF;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+.delete-icon:active path {
+  fill: #FFFFFF;
 }
 
 #check-circle {
   display: none;
   color: #192140;
-  margin: 10px 0 10px 0;
+  margin: 20px 0 10px 15px;
 }
 #check-circle:hover {
   cursor: pointer;
@@ -155,42 +225,6 @@ header {
 
 main {
   scroll-snap-align: start;
-}
-
-footer {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  background: #10131C;
-}
-footer .left-container {
-  margin: 60px 0 60px 80px;
-}
-footer .right-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
-  margin: 60px 89px 60px 0px;
-}
-footer .blog-menu, footer .course-list, footer .social-network, footer .tos {
-  display: flex;
-}
-footer .social-network {
-  gap: 15px;
-}
-footer .blog-menu, footer .course-list {
-  color: #D7F8FF;
-  text-transform: capitalize;
-  letter-spacing: -0.03em;
-  font-style: normal;
-  line-height: 130%;
-  font-weight: 400;
-  font-size: 12px;
-  gap: 20px;
-}
-footer .blog-menu :hover, footer .blog-menu :focus-visible, footer .course-list :hover, footer .course-list :focus-visible {
-  cursor: pointer;
 }
 
 .social-container p {
