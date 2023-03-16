@@ -14,10 +14,18 @@ hearts.forEach((heart) => {
   })
 })
 
+// closeBtn.forEach((button) => {
+//   button.addEventListener("click", (e) => {
+//     const gridItem = button.parentNode
+//     gridItem.parentNode.removeChild(gridItem)
+//   })
+// })
+
 closeBtn.forEach((button) => {
   button.addEventListener("click", (e) => {
-    const gridItem = button.parentNode
-    gridItem.parentNode.removeChild(gridItem)
+    // I now understand why "closest" is the method function I should have used instead of the parentNode due to the fact that I've enclosed the upper container elements on a div.
+    const cards = e.target.closest(".grid-item")
+    cards.style.display = "none"
   })
 })
 

@@ -93,6 +93,7 @@
 }
 
 @mixin gridItemStyles(){
+    transition: transform 0.3s ease;
     // added
     position: relative;
     // added
