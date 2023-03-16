@@ -42,11 +42,11 @@ header{
 // Desktop Screens
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    // margin: 60px 80px 60px 80px;
-    // gap: 40px;
-    grid-gap: 40px;
-    margin: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 60px 80px 60px 80px;
+    gap: 40px;
+    // grid-gap: 40px;
+    // margin: 20px;
 }
 
 .grid-item{
@@ -161,7 +161,7 @@ footer{
 // For screens with 425px or less
 @media only screen and (max-width: 425px){
     .grid-container{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -211,11 +211,15 @@ footer{
         display: none;
       }
 
-    // .grid-container{
-    //     @include mixins.grid(3, 3, 40px);
-    //     // Added.
-    //     margin-top: 60px;
-    // }
+// Desktop Screens
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 60px 80px 60px 80px;
+    gap: 40px;
+    // grid-gap: 40px;
+    // margin: 20px;
+}
 
 }
 

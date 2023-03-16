@@ -39,9 +39,9 @@ header {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 40px;
-  margin: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 60px 80px 60px 80px;
+  gap: 40px;
 }
 
 .grid-item {
@@ -221,7 +221,7 @@ footer .blog-menu :hover, footer .blog-menu :focus-visible, footer .course-list 
 
 @media only screen and (max-width: 425px) {
   .grid-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media only screen and (max-width: 320px) {
@@ -270,6 +270,12 @@ footer .blog-menu :hover, footer .blog-menu :focus-visible, footer .course-list 
   }
   .hamburger {
     display: none;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 60px 80px 60px 80px;
+    gap: 40px;
   }
 }
 @media (max-width: 832px) {
