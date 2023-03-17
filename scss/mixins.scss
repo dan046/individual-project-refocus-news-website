@@ -62,6 +62,7 @@
     cursor: pointer;
     display: none;
     right: 15px;
+    z-index: 1;
     top: 15px;
     &:hover path{
         fill: variables.$active;
@@ -99,15 +100,14 @@
 
 @mixin gridItemStyles(){
     @include display(flex, space-between, none, column);
+    box-shadow: 5px 5px 15px -3px rgba(0,0,0,0.1);
     background: variables.$gridItemBackground;
-    transition: transform 0.3s ease;
     // justify-content: space-between;
     // flex-direction: column;
     position: relative;
     border-radius: 6px;
     overflow: hidden;
     // display: flex;
-    box-shadow: 5px 5px 15px -3px rgba(0,0,0,0.1);
     &:hover .check-icon{
         display: block !important;
     };
@@ -116,6 +116,19 @@
         align-items: center;
         display: flex;
     };
+}
+
+@mixin overlayStyles(){
+    transition: all 0.5s ease-in-out !important;
+    background: variables.$shadow;
+    pointer-events: none;
+    position: absolute;
+    // display:none;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    left: 0;
+    top: 0;
 }
 
 @mixin detailStyles(){
@@ -340,9 +353,9 @@
 
 @mixin buttonInteractivityDesktopStyles(){
     .signup, .login{
+        transition: all 1s ease !important;
         color: variables.$normalState;
         text-transform: capitalize;
-        transition: all 0.3s ease;
         letter-spacing: -0.01em;
         border-radius: 40px;
         padding: 16px 20px;
@@ -356,8 +369,8 @@
     }
 
     .signup:hover ~ .login{
-        outline: none;
         color: variables.$normalState;
+        outline: none;
     }
 
     .signup:hover{

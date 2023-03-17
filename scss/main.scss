@@ -38,9 +38,21 @@ header{
     @include mixins.gridItemStyles();
 }
 
+.overlay{
+    @include mixins.overlayStyles();
+}
+
+.grid-item:hover{
+    .overlay{
+        // display: block;
+        opacity: 1;
+      };
+}
+
 .fa-heart{
-    cursor: pointer;
+    transition: all 0.3s ease-in-out !important;
     color: variables.$heartColor;
+    cursor: pointer;
     &:hover{
         color: variables.$active;
     }

@@ -50,12 +50,11 @@ header {
   flex-direction: column;
   align-items: none;
   display: flex;
+  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.1);
   background: #F8F9FC;
-  transition: transform 0.3s ease;
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.1);
 }
 .grid-item:hover .check-icon {
   display: block !important;
@@ -66,9 +65,26 @@ header {
   display: flex;
 }
 
+.overlay {
+  transition: all 0.5s ease-in-out !important;
+  background: linear-gradient(180deg, #192140 0%, rgba(25, 33, 64, 0) 70.8%);
+  pointer-events: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+
+.grid-item:hover .overlay {
+  opacity: 1;
+}
+
 .fa-heart {
-  cursor: pointer;
+  transition: all 0.3s ease-in-out !important;
   color: #9D9DB5;
+  cursor: pointer;
 }
 .fa-heart:hover {
   color: #0266FF;
@@ -114,6 +130,7 @@ header {
   cursor: pointer;
   display: none;
   right: 15px;
+  z-index: 1;
   top: 15px;
 }
 .delete-icon:hover path {
@@ -461,9 +478,9 @@ footer .legality .tos {
     display: flex;
   }
   .button-container .signup, .button-container .login {
+    transition: all 1s ease !important;
     color: #9D9DB5;
     text-transform: capitalize;
-    transition: all 0.3s ease;
     letter-spacing: -0.01em;
     border-radius: 40px;
     padding: 16px 20px;
@@ -476,8 +493,9 @@ footer .legality .tos {
     border: 0;
   }
   .button-container .signup:hover ~ .login {
-    outline: none;
+    transition: all 1s ease !important;
     color: #9D9DB5;
+    outline: none;
   }
   .button-container .signup:hover {
     outline: 1px solid #0266FF;
