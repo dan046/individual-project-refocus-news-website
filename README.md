@@ -34,7 +34,8 @@ sizes, fonts, borders, and distances. Following this path, you will reproduce th
 
 ## Action Plan
 ### Step 1: Explore the design on Figma
-- Open the design, and investigate its parts carefully: UI, desktop version, and mobile version.
+- Open the design, and investigate its parts carefully:
+  - UI, desktop version, and mobile version.
 - Analyze what approaches you may need to use to replicate the design and make the website adaptive.
 
 ### Step 2: Replicate the design using HTML, CSS, and Sass
