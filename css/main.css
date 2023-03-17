@@ -46,17 +46,19 @@ header {
 }
 
 .grid-item {
-  background: #F8F9FC;
-  transition: transform 0.3s ease;
   justify-content: space-between;
   flex-direction: column;
+  align-items: none;
+  display: flex;
+  background: #F8F9FC;
+  transition: transform 0.3s ease;
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  display: flex;
+  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.1);
 }
-.grid-item:hover #check-circle {
-  display: block;
+.grid-item:hover .check-icon {
+  display: block !important;
 }
 .grid-item h3 {
   margin: 10px 20px 0 20px;
@@ -137,17 +139,17 @@ header {
   fill: #FFFFFF;
 }
 
-#check-circle {
-  display: none;
+.check-icon {
+  display: none !important;
   color: #192140;
-  margin: 20px 0 10px 15px;
+  margin: 20px 0 10px 15px !important;
 }
-#check-circle:hover {
-  cursor: pointer;
+.check-icon:hover {
+  cursor: pointer !important;
 }
 
-#check-circle.active {
-  display: block;
+.check-icon.active {
+  display: block !important;
 }
 
 .nav-link {
@@ -230,7 +232,7 @@ main {
 footer {
   justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: none;
   display: flex;
   background-color: #10131C;
   margin-top: auto;
@@ -371,7 +373,7 @@ footer .legality .tos {
   footer {
     justify-content: center;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: none;
     display: flex;
     background-color: #10131C;
     margin-top: auto;
@@ -507,7 +509,7 @@ footer .legality .tos {
   footer {
     justify-content: space-between;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: none;
     display: flex;
     background-color: #10131C;
     margin-top: auto;

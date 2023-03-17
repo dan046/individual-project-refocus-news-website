@@ -73,17 +73,18 @@ header{
     @include mixins.deleteButtonActiveStyles();
 }
 
-#check-circle{
-    display: none;
+// Added an !important tag to override some of the default font-awesome styles. These styles could have been shorter if Font-Awesome Pro is used.
+.check-icon{
+    display: none !important;
     color: variables.$checkMark;
-    margin: 20px 0 10px 15px;
+    margin: 20px 0 10px 15px !important;
     &:hover{
-        cursor: pointer;
+        cursor: pointer !important;
     };
 }
 
-#check-circle.active{
-    display: block;
+.check-icon.active{
+    display: block !important;
 }
 
 .nav-link{

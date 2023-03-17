@@ -98,16 +98,18 @@
 }
 
 @mixin gridItemStyles(){
+    @include display(flex, space-between, none, column);
     background: variables.$gridItemBackground;
     transition: transform 0.3s ease;
-    justify-content: space-between;
-    flex-direction: column;
+    // justify-content: space-between;
+    // flex-direction: column;
     position: relative;
     border-radius: 6px;
     overflow: hidden;
-    display: flex;
-    &:hover #check-circle{
-        display: block;
+    // display: flex;
+    box-shadow: 5px 5px 15px -3px rgba(0,0,0,0.1);
+    &:hover .check-icon{
+        display: block !important;
     };
     h3{
         margin: 10px 20px 0 20px;
@@ -145,7 +147,7 @@
 }
 
 @mixin footerMobileStyles(){
-    @include display(flex, center, flex-start, column);
+    @include display(flex, center, none, column);
     background-color: variables.$footerBG;
     // flex-direction: column;
     margin-top: auto;
@@ -192,7 +194,7 @@
 }
 
 @mixin footerDesktopStyles(){
-    @include display(flex, space-between, flex-start, row);
+    @include display(flex, space-between, none, row);
     background-color: variables.$footerBG;
     // flex-direction: column;
     margin-top: auto;

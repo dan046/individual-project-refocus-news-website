@@ -1,7 +1,7 @@
 const closeBtn = document.querySelectorAll(".delete-icon")
 const hamburger = document.querySelector(".hamburger")
 const navMenu = document.querySelector(".nav-menu")
-const checkBtn = document.querySelectorAll("#check-circle")
+const checkBtn = document.querySelectorAll(".fa-check-circle")
 const hearts = document.querySelectorAll(".fa-heart")
 // const signup = document.querySelector(".signup")
 // const login = document.querySelector(".login")
