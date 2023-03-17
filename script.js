@@ -3,6 +3,18 @@ const hamburger = document.querySelector(".hamburger")
 const navMenu = document.querySelector(".nav-menu")
 const checkBtn = document.querySelectorAll("#check-circle")
 const hearts = document.querySelectorAll(".fa-heart")
+// const signup = document.querySelector(".signup")
+// const login = document.querySelector(".login")
+
+// signup.addEventListener("mouseover", (e) => {
+//   signup.classList.add("active")
+//   login.classList.remove("active")
+// })
+
+// signup.addEventListener("mouseleave", (e) => {
+//   signup.classList.remove("active")
+//   login.classList.add("active")
+// })
 
 hearts.forEach((heart) => {
   heart.addEventListener("click", () => {
@@ -23,7 +35,7 @@ hearts.forEach((heart) => {
 
 closeBtn.forEach((button) => {
   button.addEventListener("click", (e) => {
-    // I now understand why "closest" is the method function I should have used instead of the parentNode due to the fact that I've enclosed the upper container elements on a div.
+    // I now understand why "Element.closest()" is the method function I should use instead of the parentNode due to the fact that I've enclosed the upper container elements on a div.
     const cards = e.target.closest(".grid-item")
     cards.style.display = "none"
   })

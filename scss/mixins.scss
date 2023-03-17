@@ -1,9 +1,10 @@
 @use 'variables.scss';
 
-@mixin display($display, $justify-content, $align-items){
-    display: $display;
+@mixin display($display, $justify-content, $align-items, $flex-direction){
     justify-content: $justify-content;
+    flex-direction: $flex-direction;
     align-items: $align-items;
+    display: $display;
 }
 
 @mixin headerDesktop(){
@@ -28,24 +29,23 @@
 }
 
 @mixin navMenuDesktop(){
-    @include display(none, space-between, center);
+    @include display(none, space-between, center, row);
     margin-right: 80px;
     gap: 20px;
 }
 
 @mixin navMenuMobile(){
-    @include display(none, space-between, center);
+    @include display(none, space-between, center, column);
+    background-color: variables.$header;
     margin-right: 80px;
-    gap: 20px;
-    // 
     text-align: center;
     padding: 24px 0;
     position: fixed;
     display: none;
     width: 100%;
     top: 70px;
+    gap: 20px;
     left: 0;
-    background-color: variables.$header;
 }
 
 @mixin linkStyles(){
@@ -58,8 +58,8 @@
 }
 
 @mixin deleteButtonStyles(){
-    cursor: pointer;
     position: absolute;
+    cursor: pointer;
     display: none;
     right: 15px;
     top: 15px;
@@ -72,101 +72,201 @@
 }
 
 @mixin deleteButtonActiveStyles(){
+    transition: background-color 0.3s ease;
     background-color: variables.$active;
-    border-radius: 50%;
+    justify-content: center;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
+    border-radius: 50%;
     path{
         fill: variables.$whitebackground;
     }
 }
 
-@mixin gridContainerStyles(){
+// @mixin gridContainerDesktopStyles(){
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+//     margin: 60px 80px 60px 80px;
+//     gap: 40px;
+// }
+
+@mixin gridContainerStyles($margin, $gap, $column){
+    grid-template-columns: repeat($column, 1fr);
+    margin: $margin;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 60px 80px 60px 80px;
-    gap: 40px;
-    // grid-gap: 40px;
-    // margin: 20px;
+    gap: $gap;
 }
 
 @mixin gridItemStyles(){
-    transition: transform 0.3s ease;
-    // added
-    position: relative;
-    // added
-    // added 2
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    // added 2
     background: variables.$gridItemBackground;
+    transition: transform 0.3s ease;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
     border-radius: 6px;
     overflow: hidden;
-    // width: 320px;
+    display: flex;
     &:hover #check-circle{
         display: block;
     };
     h3{
         margin: 10px 20px 0 20px;
-        display: flex;
         align-items: center;
+        display: flex;
     };
 }
 
 @mixin detailStyles(){
-    @include display(flex, space-between, center);
+    @include display(flex, space-between, center, row);
     border-top: 1px solid variables.$detailsBorderColor;
-    margin: 0 20px;
     padding: 10px 0 10px 0;
+    margin: 0 20px;
 }
 
 @mixin dateStyles(){
     border: 1px solid variables.$borderColor;
+    color: variables.$dateColor;
     border-radius: 40px;
-    padding: 4px 10px;
     font-style: normal;
+    text-align: center;
+    line-height: 130%;
+    padding: 4px 10px;
     font-weight: 400;
     font-size: 12px;
-    line-height: 130%;
-    text-align: center;
-    color: variables.$dateColor;
 }
 
 @mixin statsStyles(){
     color: variables.$statsColor;
+    letter-spacing: -0.03em;
     font-style: normal;
+    line-height: 130%;
     font-weight: 400;
     font-size: 12px;
-    line-height: 130%;
-    letter-spacing: -0.03em;
 }
 
-@mixin footer(){
+@mixin footerMobileStyles(){
+    @include display(flex, center, flex-start, column);
+    background-color: variables.$footerBG;
+    // flex-direction: column;
     margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    .left-container{
-        margin: 60px 0 60px 80px
-    }
-    .right-container{
-        @include display(flex, space-between, flex-start);
-        flex-direction: column;
-        margin: 60px 89px 60px 0px;
-    }
-    @include footerStyles();
-    .blog-menu, .course-list, .social-network, .tos{
+    position: sticky;
+
+    .left-container, .blog-menu, .course-list, .social-network{
         display: flex;
     }
+    .left-container{
+        flex-direction: column;
+        margin: 40px 15px;
+    }
+    h2{
+        @include blogStyles();
+    }
+    .blog-menu{
+        flex-wrap: wrap;
+        width: 75%;
+        gap: 20px;
+    }
+    .course-container{
+        margin-top: 30px;
+    }
+    .course-list{
+        gap: 20px;
+    }
+    .social-container{
+        margin: 0 15px;
+    }
     .social-network{
-        gap: 15px;
+        gap: 13px;
     }
-    .blog-menu, .course-list{
-        @include footerLinkStyles();
+    .legality{
+        @include legalityStyles();
+        flex-direction: column;
+        margin: 40px 15px;
+        display: flex;
+        gap: 10px;
+        .tos{
+            display: flex;
+            gap: 10px;
+        }
     }
+}
+
+@mixin footerDesktopStyles(){
+    @include display(flex, space-between, flex-start, row);
+    background-color: variables.$footerBG;
+    // flex-direction: column;
+    margin-top: auto;
+    position: sticky;
+
+    .left-container, .blog-menu, .course-list, .social-network{
+        display: flex;
+    }
+    .left-container{
+        flex-direction: column;
+        margin: 60px 80px;
+    }
+    h2{
+        @include blogStyles();
+    }
+    .blog-menu{
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 20px;
+    }
+    .course-container{
+        margin-top: 30px;
+    }
+    .course-list{
+        gap: 20px;
+    }
+    .right-container{
+        margin: 60px 100px 82px 0;
+    }
+    .social-container{
+        margin: 0 15px;
+    }
+    .social-network{
+        gap: 13px;
+    }
+    .legality{
+        @include legalityStyles();
+        flex-direction: row;
+        margin: 40px 15px;
+        display: flex;
+        gap: 10px;
+        .tos{
+            display: flex;
+            gap: 10px;
+        }
+    }
+}
+
+// @mixin footerStylesDesktop(){
+//     background-color: variables.$footerBG;
+//     position: sticky;
+//     width: 100%;
+//     // z-index: 1;
+//     // top: 0;
+//     margin-top: auto;
+// }
+
+// @mixin footerStylesMobile(){
+//     background: variables.$footerBG;
+//     position: sticky;
+//     width: 100%;
+//     // z-index: 1;
+//     // top: 0;
+//     margin-top: auto;
+// }
+
+@mixin blogStyles(){
+    color: variables.$whiteFontColor;
+    text-transform: capitalize;
+    letter-spacing: -0.02em;
+    font-style: normal;
+    line-height: 130%;
+    font-weight: 700;
+    font-size: 16px;
 }
 
 @mixin socialContainerTextStyles(){
@@ -198,18 +298,16 @@
     font-weight: 400;
     font-size: 12px;
     gap: 20px;
-    :hover, :focus-visible{
-        cursor: pointer;
-    }
+
 }
 
-@mixin buttonStylesMobile(){
-    display: flex;
-    flex-direction: column;
-    a{
-        text-transform: capitalize;
-    }
-}
+// @mixin buttonStylesMobile(){
+//     // display: flex;
+//     // flex-direction: column;
+//     a{
+//         text-transform: capitalize;
+//     }
+// }
 
 @mixin signupStyles(){
     color: variables.$normal;
@@ -220,27 +318,77 @@
     font-size: 16px;
 }
 
-@mixin loginDesktop(){
-    border: 1px solid variables.$lightblue;
-    color: variables.$lightblue;
-    letter-spacing: -0.01em;
-    border-radius: 40px;
-    padding: 16px 20px;
-    font-style: normal;
-    line-height: 16px;
-    font-weight: 600;
-    font-size: 16px;
+@mixin buttonInteractivityMobileStyles(){
+    .signup, .login{
+        color: variables.$normalState;
+        text-transform: capitalize;
+        transition: all 0.3s ease;
+        letter-spacing: -0.01em;
+        // border-radius: 40px;
+        padding: 10px 0;
+        font-style: normal;
+        line-height: 16px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        outline: 0;
+        border: 0;
+    }
 }
 
-@mixin loginStylesMobile(){
-    color: variables.$lightblue;
-    letter-spacing: -0.01em;
-    padding: 16px 20px;
-    font-style: normal;
-    line-height: 16px;
-    font-weight: 600;
-    font-size: 16px;
+@mixin buttonInteractivityDesktopStyles(){
+    .signup, .login{
+        color: variables.$normalState;
+        text-transform: capitalize;
+        transition: all 0.3s ease;
+        letter-spacing: -0.01em;
+        border-radius: 40px;
+        padding: 16px 20px;
+        font-style: normal;
+        line-height: 16px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        outline: 0;
+        border: 0;
+    }
+
+    .signup:hover ~ .login{
+        outline: none;
+        color: variables.$normalState;
+    }
+
+    .signup:hover{
+        outline: 1px solid variables.$active;
+        color: variables.$active;
+        border-radius: 40px;
+        padding: 16px 20px;
+        border: 0;
+    }
+
+    .signup:active, .login:active{
+        color: variables.$whiteFontColor;
+        background: variables.$active;
+    }
+
+    .active{
+        outline: 1px solid variables.$active;
+        color: variables.$active;
+        border-radius: 40px;
+        padding: 16px 20px;
+        border: 0;
+    }
 }
+
+// @mixin loginStylesMobile(){
+//     color: variables.$lightblue;
+//     letter-spacing: -0.01em;
+//     padding: 16px 20px;
+//     font-style: normal;
+//     line-height: 16px;
+//     font-weight: 600;
+//     font-size: 16px;
+// }
 
 @mixin hamburgerStyles(){
     position: relative;
@@ -263,16 +411,13 @@
 }
 
 @mixin hamburgerBarStyles(){
-    display: block;
-    width: 25px;
-    height: 2px;
-    margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: variables.$fill;
     transition: transform 0.2s ease-out;
+    background-color: variables.$fill;
+    transition: all 0.3s ease-in-out;
+    margin: 5px auto;
+    display: block;
+    height: 2px;
+    width: 25px;
 }
 
-@mixin footerStyles(){
-    background: variables.$footerBG;
-}

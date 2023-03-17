@@ -12,7 +12,6 @@ body{
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
 }
 
 header{
@@ -32,7 +31,7 @@ header{
 }
 
 .grid-container {
-    @include mixins.gridContainerStyles();
+    @include mixins.gridContainerStyles(60px 15px 60px 15px, 30px, 2);
 }
 
 .grid-item{
@@ -60,10 +59,6 @@ header{
 }
 .views{
     @include mixins.statsStyles();
-}
-
-footer{
-    // @include mixins.footer();
 }
 
 .delete-icon{
@@ -95,14 +90,10 @@ footer{
     @include mixins.linkStyles();
 }
 
-.buttons{
-    @include mixins.buttonStylesMobile();
-    .signup{
-        @include mixins.signupStyles();
-    };
-    .login{
-        @include mixins.loginStylesMobile();
-    }
+.button-container{
+    @include mixins.buttonInteractivityMobileStyles();
+    @include mixins.display(flex, center, center, column);
+    cursor: pointer;
 }
 
 .hamburger {
@@ -129,6 +120,32 @@ main{
     scroll-snap-align: start;
 }
 
+footer{
+    @include mixins.footerMobileStyles();
+}
+
+.left-container{
+    display: flex;
+}
+
+// footer h2{
+//     @include mixins.blogStyles();
+// }
+
+.blog-item{
+    @include mixins.footerLinkStyles();
+    &:hover, :focus-within{
+        cursor: pointer;
+    }
+}
+
+.course-item{
+    @include mixins.footerLinkStyles();
+    &:hover, :focus-within{
+        cursor: pointer;
+    }
+}
+
 .social-container p{
     @include mixins.socialContainerTextStyles();
 }
@@ -143,22 +160,43 @@ main{
     }
 }
 
+// For screens with 490px less
+@media only screen and (max-width: 490px){
+    .grid-container {
+        @include mixins.gridContainerStyles(60px 15px 60px 15px, 30px, 1);
+    }
+}
+
+// // For screens with 490px less
+// @media only screen and (max-width: 845px){
+//     .grid-container {
+//         @include mixins.gridContainerStyles(60px 10px 60px 10px, 30px, 2);
+//     }
+// }
+
 // For screens with 425px or less
 @media only screen and (max-width: 425px){
     .grid-container{
-        grid-template-columns: repeat(1, 1fr);
+        @include mixins.gridContainerStyles(60px 15px 60px 15px, 40px, 1);
     }
+    // .blog-menu{
+    //     display: inline-block;
+    //     gap: 20px;
+    // }
 }
 
 // For screens with 320px or less
 @media only screen and (max-width: 320px){
     .grid-container{
-        grid-template-columns: repeat(1, 1fr);
+        @include mixins.gridContainerStyles(60px 15px 60px 15px, 40px, 1);
+    }
+    footer{
+        @include mixins.footerMobileStyles();
     }
 }
 
 // Desktop Screens
-@media only screen and (min-width: 833px) {
+@media only screen and (min-width: 843px) {
     header{
         @include mixins.headerDesktop();
     }
@@ -169,7 +207,7 @@ main{
     }
 
     .nav-menu{
-        @include mixins.display(flex, space-between, center);
+        @include mixins.display(flex, space-between, center, row);
         gap: 30px;
     }
 
@@ -182,34 +220,27 @@ main{
         text-decoration: underline;
     }
 
-    .buttons{
-        display: flex;
-        flex-direction: row;
-        gap: 40px;
-    }
-
-    .login{
-        @include mixins.loginDesktop();
+    .button-container{
+        @include mixins.display(flex, center, center, row);
+        @include mixins.buttonInteractivityDesktopStyles();
     }
 
     .hamburger {
         display: none;
       }
 
-// Desktop Screens
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 60px 80px 60px 80px;
-    gap: 40px;
-    // grid-gap: 40px;
-    // margin: 20px;
-}
+    // Desktop Screens
+    .grid-container {
+        @include mixins.gridContainerStyles(60px 80px 60px 80px, 40px, 3)
+      }
 
+    footer{
+        @include mixins.footerDesktopStyles();
+    }
 }
 
 // Mobile Hamburger Props
-@media (max-width: 832px) {
+@media (max-width: 842px) {
     .nav-menu {
         @include mixins.navMenuMobile();
     }
