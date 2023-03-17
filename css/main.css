@@ -163,6 +163,7 @@ header {
 }
 .check-icon:hover {
   cursor: pointer !important;
+  color: #0266FF;
 }
 
 .check-icon.active {
@@ -493,7 +494,6 @@ footer .legality .tos {
     border: 0;
   }
   .button-container .signup:hover ~ .login {
-    transition: all 1s ease !important;
     color: #9D9DB5;
     outline: none;
   }

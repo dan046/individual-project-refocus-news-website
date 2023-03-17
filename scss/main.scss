@@ -92,6 +92,7 @@ header{
     margin: 20px 0 10px 15px !important;
     &:hover{
         cursor: pointer !important;
+        color: variables.$active;
     };
 }
 

@@ -48,11 +48,13 @@ checkBtn.forEach((button) => {
       button.style.color = "#192140"
       isActive = false
       button.classList.remove("active")
+      button.setAttribute("title", "Mark as read")
     } else {
       button.style.color = "#0266FF"
       button.style.visibility = "visible"
       isActive = true
       button.classList.add("active")
+      button.setAttribute("title", "You've already read this article")
     }
   })
 })
